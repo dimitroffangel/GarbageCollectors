@@ -1,0 +1,209 @@
+[33mcommit 217c7299838b47b1e4ebe5105cd17892e3683619[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 03:52:15 2020 +0300
+
+    UnitTests::Allocate_Via_Slab_MediumObjects_Add_Delete()
+
+[33mcommit 2205657edf089974748c9767e751ff2d53924462[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 03:49:35 2020 +0300
+
+    UnitTests::Allocate_Via_Slab_MediumObjects()
+
+[33mcommit 961be0a9ff35f7ff7168b9fe77d9e2373787c8f8[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 03:47:13 2020 +0300
+
+    added in UnitTest class Allocate_Via_Slab_MediumObjects_Add_Delete()
+
+[33mcommit d4075320bd886905f184579059045849cdad86f7[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 03:44:08 2020 +0300
+
+    added Allocate_Via_Slab_MediumObjects()
+
+[33mcommit f5e3d6fefef73a91cdbb4dccf9349aa131380e9a[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 03:40:49 2020 +0300
+
+    added in UnitTest class: Allocate_Via_Buddy_MediumObjects_Add_Delete()
+
+[33mcommit 9159651aa871e8edde880e10b7936d39137e6373[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 03:38:26 2020 +0300
+
+    added in UnitTest class: Allocate_Via_Buddy_MediumObjects
+
+[33mcommit 788bc36d7c5c047770b328bd150d6bbcb83ce48a[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sun Aug 16 13:10:19 2020 +0300
+
+    FixedLocationAllocator::Allocate() the index of the recentlyAllocatedChunk was not not working properly due to getting firstChunkAllocator address minus the recentlyAllocatedChunk which is minus
+
+[33mcommit 1286e9f4671b952d53b93652428ce4e93a8b355e[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sun Aug 16 13:08:58 2020 +0300
+
+    added only the SlabPoolAllocator
+
+[33mcommit e617b5aeff4e9a8dafb97bbe4a65b4263d79d31a[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sun Aug 16 00:08:09 2020 +0300
+
+    finished refactoring those ranging stuff hopefully
+
+[33mcommit fe6ed23e5584a963e6a21e073589fab1165d451d[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 23:52:34 2020 +0300
+
+    FixedAllocator::Deallocate(void*) assertion for the range of the pointer was not checking the last chunk in the vector
+
+[33mcommit 8699c0add613cd94fe78334e8ddc812a5524a6d8[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 23:50:48 2020 +0300
+
+    FixedAllocator::FindChunkWithPointer(void*) added assertion that the pointer is in range if uintptr_t is supported
+
+[33mcommit 63c2de0df9834fd28c5adf8167251a50178b20a9[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 23:44:24 2020 +0300
+
+    added pointer assertion is in range when FixedLocationAllocator::FindChunkWithPointer(void*)
+
+[33mcommit 045b2eb9c7026cd5e2d8ad75bb524eb880bf879a[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 23:35:21 2020 +0300
+
+    FixedLocationAllocator::DoDeallocation(void*) fixed pointer checking whether is in range of the recentlyDeallocatedChunk it was not doing that. It was assuring  that the pointer is in the range of the chunks
+
+[33mcommit 69c9a3f9c960d1784fdb8e4eca4ba966765f93d9[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 23:32:14 2020 +0300
+
+    fixed some pointer arithmetic checking whether a pointer is in the range of the block in FixedAllocator
+
+[33mcommit aff5019542d745f3d232130045eda5842c828e63[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 23:22:43 2020 +0300
+
+    finished deleting in the FixedLocationAllocator
+
+[33mcommit 0796704b3f760ca26b6ce8b0bbca3f75130d9007[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 21:49:48 2020 +0300
+
+    FixedLocationAllocator::Allocate() is enabled
+
+[33mcommit 032e26909d3599920873dacfd8704a92e526053a[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 20:11:58 2020 +0300
+
+    removed a magic constant
+
+[33mcommit ccffbb241d7c98b17a22395fc44c8ca9c5d124cd[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 20:03:10 2020 +0300
+
+    added chunk deallocation and removed size_t blockSize from the arguments because is it was enhanced in the block of memory
+
+[33mcommit 8fe7d17b524cad3dc9e288134b72afe3a385784e[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 19:54:08 2020 +0300
+
+    added chunk allocation to the FixedLocationAllocator
+
+[33mcommit 3a371e05c73cef08040a1f2d13cca991d9b2d932[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 19:04:54 2020 +0300
+
+    added initialization for the FixedLocationAllocator
+
+[33mcommit 3f57b469d5e98c7e298dfacbc89cd21e7f4f751b[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Sat Aug 15 19:03:14 2020 +0300
+
+    added initialization for the FixedLocationAllocator
+
+[33mcommit 830b3c7c0d28b78689167031b6959ea45be29b29[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 23:16:47 2020 +0300
+
+    removed m_NumberOfLevels due to the use of static const
+
+[33mcommit 2fb3d2ad77f86f32f0dbc7d144bfcb7a5713dd4c[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:58:02 2020 +0300
+
+    added std::cout clarification which function is called
+
+[33mcommit 03e095a4153e89b8fa50a51ebf7c61991ce1b934[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:50:03 2020 +0300
+
+    Allocate_Via_Buddy_SmallObjects_Add_Delete() wrong destructor was being called
+
+[33mcommit d85d059a2ca7c350f3e525bd3ced01cda466fa3a[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:47:33 2020 +0300
+
+    Allocate_Via_Slab_BigObjects_Add_Delete destruction was reversed
+
+[33mcommit 8c3506a88e37ed2e656a91e0c793536b71fda034[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:46:10 2020 +0300
+
+    Allocate_Via_Buddy_SmallObjects_Add_Delete destructor was calling backward
+
+[33mcommit 3d52521449127bc5894359a93c8fbf7f79c8a3d0[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:42:28 2020 +0300
+
+    Allocate_Via_Buddy_RandomObject_DeleteRandomPosition() Allocate_Via_Slab_RandomObject_DeleteRandomPosition() fixed a mistake of calling wrong constructors
+
+[33mcommit 9b21c6f6f4118cc46e4e40b22aea78cc2e1ac674[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:31:47 2020 +0300
+
+    fixed a bug in UnitTests::Allocate_Via_Slab_AllObjects_Add_Delete where the allocation of the EpicFoo was calling afterwards a construction of a GiantFoo
+
+[33mcommit ed9cdc3c7e550acea57ff4cbc43552d10088b4ea[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 22:07:23 2020 +0300
+
+    Chunk::Deallocate(void*) pointer is checked depending on the system to have uintptr_t and fixed reversed deletion in UnitTest::Allocate_Via_Slab_SmallObjects_Add_Delete()
+
+[33mcommit ee2e3c450b0e200c779955240f5fdaf70bad9217[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 21:33:57 2020 +0300
+
+    fixed UnitTest::Allocate_BigObjects_Via_Buddy deletion was reversed
+
+[33mcommit fbfae07a020449ed0b83e94985a44268dfddc2b7[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 21:31:16 2020 +0300
+
+    fixed finding level when the size is not aligned to a power of two
+
+[33mcommit 5e38358ea3c353ec9fb16a62d3f230cf5168f6a6[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 21:10:42 2020 +0300
+
+    added definition to all of the header unit testing functions
+
+[33mcommit 7b27787d78f2174ecdb4eb6d443823c8f41dbd2f[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 20:57:13 2020 +0300
+
+    Allocate_Via_Slab_SmallObjects_Add_Delete definition added
+
+[33mcommit 6b88eee437ad5bf648c11ef425ed559aa9796356[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 20:55:41 2020 +0300
+
+    Allocate_Via_Slab_SmallObjects definition added
+
+[33mcommit e916b1571d143b674cf013a5e2a44b1c5cf06d5d[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Fri Aug 14 20:52:40 2020 +0300
+
+    added the testing 

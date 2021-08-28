@@ -1,0 +1,41 @@
+[33mcommit 902d3c5462135c43fe5a2baf45446bc42676f232[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Thu Sep 24 15:53:16 2020 +0300
+
+    Temporarily removed the thread-safe of the allocating/deallocating memory, provided with the mutex, and set the constructor and destructor of the BuddyAllocator to private, so that it cannot be created alone, and added a nullptr revision of the static BuddyAllocator whether it is created already so that there is no memory leak
+
+[33mcommit afe69da8e1268287d53d624be37fae55a35b2696[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 13:08:24 2020 +0300
+
+    UnitTests::Allocate_Via_MallocFree_RandomObject_Add_DeleteRandomPosition()
+
+[33mcommit 80fd4dea5257b8089c7f562e18cc69ee0f7f8a49[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 13:02:03 2020 +0300
+
+    added option for how to delete to the malloc/free functions in the UnitTest class
+
+[33mcommit adaf8cc3dde25de5c703a2d69d45056df74bb9ac[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 12:55:39 2020 +0300
+
+    added  UnitTest::Allocate_Via_Default_RandomObject_Add_DeleteRandomPosition()
+
+[33mcommit 009cb3a047505593c08ccdc8a5ddfb5b695adc1c[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 12:50:36 2020 +0300
+
+    added option for deletion in the standard delete
+
+[33mcommit f6d03ef15fc3b14c1ee3e7fcbbdb61d1b6e2b778[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 12:44:55 2020 +0300
+
+     added UnitTest::Allocate_Via_Slab_RandomObject_Add_DeleteRandomPosition
+
+[33mcommit b345c1ca5f33f67a5b63ad4a38b325a66e1b6766[m
+Author: dimitroffangel <angeldimitrov05@gmail.com>
+Date:   Wed Aug 19 12:42:15 2020 +0300
+
+    added option of how to delete in the slab unit tests

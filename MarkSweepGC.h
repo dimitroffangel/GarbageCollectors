@@ -23,8 +23,11 @@ public:
         if (++m_AllocsSinceGC == m_GCInterval)
         {
             CollectGarbage();
-
+            m_AllocsSinceGC = 0;
         }
+        auto memory = ::operator new(size);
+        m_Allocated.insert(static_cast<Object*>(memory));
+        return memory;
     }
 
     void CollectGarbage()
