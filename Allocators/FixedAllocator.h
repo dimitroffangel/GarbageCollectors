@@ -12,7 +12,6 @@ private:
 	Chunk* FindChunkWithPointer(void* pointer);
 
 	using Chunks = std::vector<Chunk>;
-	using UsedPositionsOfChunks = std::vector<std::bitset<m_NumberOfBlocks>>;
 
 	std::size_t m_BlockSize;
 	unsigned char m_NumberOfBlocks;
