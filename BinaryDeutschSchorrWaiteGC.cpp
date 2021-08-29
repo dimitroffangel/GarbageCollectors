@@ -75,7 +75,7 @@ void BinaryDeutschSchorrWaiteGC::CollectGarbage()
 
 void BinaryDeutschSchorrWaiteGC::VisitReference(Object* from, Object** to, void* state)
 {
-	CollectGarbage();
+
 }
 
 void BinaryDeutschSchorrWaiteGC::Shutdown()
