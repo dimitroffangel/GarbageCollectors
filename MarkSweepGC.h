@@ -16,6 +16,11 @@ public:
 
     void* Allocate(const size_t size) override;
 
+    void SetRoot(Object** root)
+    {
+        m_Root = root;
+    }
+
     void CollectGarbage();
 
     void Shutdown() override;
