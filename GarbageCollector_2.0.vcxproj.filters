@@ -30,6 +30,9 @@
     <ClCompile Include="BoehmDemersWeiserGC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CheneyAlgorithmGC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BoehmDemersWeiserGC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CheneyAlgorithmGC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

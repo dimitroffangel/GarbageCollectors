@@ -129,6 +129,7 @@
     <ClCompile Include="FastLogarithm.cpp" />
     <ClCompile Include="FixedAllocator.cpp" />
     <ClCompile Include="FixedLocationAllocator.cpp" />
+    <ClCompile Include="LinearAllocator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SlabPoolAllocator.cpp" />
     <ClCompile Include="SmallObject.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="FastLogarithm.h" />
     <ClInclude Include="FixedAllocator.h" />
     <ClInclude Include="FixedLocationAllocator.h" />
+    <ClInclude Include="LinearAllocator.h" />
     <ClInclude Include="SharedHandler.h" />
     <ClInclude Include="SlabPoolAllocator.h" />
     <ClInclude Include="SmallObject.h" />

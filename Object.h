@@ -11,7 +11,9 @@ class Object
 {
 public:
     int m_NumberOfReferredObjects;
+    Object* m_ForwardPointer = nullptr;
     Object** m_ReferedObjects;
+    const size_t m_Size;
 
 public:
     virtual ~Object() {}
