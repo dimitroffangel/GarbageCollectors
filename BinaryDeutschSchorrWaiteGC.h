@@ -23,7 +23,12 @@ public:
         if (++m_AllocsSinceGC == m_GCInterval)
         {
             CollectGarbage();
+            m_AllocsSinceGC = 0;
         }
+
+        auto memory = ::operator new(size);
+        m_Allocated.insert(static_cast<BDSW_Binary_Object*>(memory));
+        return memory;
     }
 
     void CollectGarbage()
@@ -80,5 +85,20 @@ public:
             }
         }
     }
+
+
+    void VisitReference(Object* from, Object** to, void* state) override;
+
+    void SetRoot(Object** root) override
+    {
+
+    }
+
+    void SetRoot(BDSW_Binary_Object** root)
+    {
+        m_Root = root;
+    }
+
+    void Shutdown() override;
 };
 

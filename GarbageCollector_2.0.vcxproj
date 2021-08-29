@@ -145,7 +145,6 @@
     <ClCompile Include="HybridMarkAndCopyGC.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MarkSweepGC.cpp" />
-    <ClCompile Include="Object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryDeutschSchorrWaiteGC.h" />
