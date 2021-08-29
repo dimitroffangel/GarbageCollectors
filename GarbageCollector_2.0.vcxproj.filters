@@ -33,6 +33,9 @@
     <ClCompile Include="CheneyAlgorithmGC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HybridMarkAndCopyGC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CheneyAlgorithmGC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HybridMarkAndCopyGC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

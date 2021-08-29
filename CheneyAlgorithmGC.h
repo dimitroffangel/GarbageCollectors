@@ -60,6 +60,7 @@ private:
 		for (size_t i = 0; i < objectToCopy->m_NumberOfReferredObjects; ++i)
 		{
 			Copy(objectToCopy->m_ReferedObjects[i]);
+			objectToCopy->m_ReferedObjects[i] = objectToCopy->m_ForwardPointer;
 		}
 	}
 };

@@ -17,7 +17,27 @@ public:
 
 public:
     virtual ~Object() {}
-    virtual void VisitReferences(ObjectVisitor* visitor, void* state) = 0;
+
+    virtual void VisitReferences(ObjectVisitor* visitor, void* state, std::unordered_set<Object*>& visitedObjects)
+    {
+        if (visitedObjects.find(this) != visitedObjects.end())
+        {
+            return;
+        }
+
+        visitedObjects.insert(this);
+
+        for (size_t i = 0; i < m_NumberOfReferredObjects; ++i)
+        {
+            m_ReferedObjects[i]->VisitReferences(visitor, state, visitedObjects);
+        }
+    }
+};
+
+class LocalSpaceObject : public Object
+{
+public:
+    size_t m_LocalSpaceIndex;
 };
 
 class BDSW_Binary_Object
@@ -72,7 +92,7 @@ public:
         auto insertResult = m_Visited.insert(o);
         if (insertResult.second)
         {
-            o->VisitReferences(this, nullptr);
+            o->VisitReferences(this, nullptr, m_Visited);
             o->~Object();
         }
     }
