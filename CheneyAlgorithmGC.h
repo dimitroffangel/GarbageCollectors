@@ -30,7 +30,7 @@ public:
 
     void CollectGarbage()
     {
-
+		FlipSpaces();
     }
 
     void Shutdown() override
