@@ -2,50 +2,14 @@
 
 #include <cstddef>
 #include <unordered_set>
-#include <memory>
 
 class ObjectVisitor;
-class BDSW_ObjectVisitor;
 
 class Object
 {
 public:
-    int m_NumberOfReferredObjects;
-    Object* m_ForwardPointer = nullptr;
-    Object** m_ReferedObjects;
-    size_t m_Size;
-
-public:
     virtual ~Object() {}
-
     virtual void VisitReferences(ObjectVisitor* visitor, void* state) = 0;
-};
-
-class LocalSpaceObject : public Object
-{
-public:
-    size_t m_LocalSpaceIndex;
-};
-
-class BDSW_Binary_Object
-{
-public:
-    bool m_HasMarkedObject;
-    BDSW_Binary_Object** m_ReferedObjects;
-    bool m_HasIteratedLeftChild;
-
-    virtual ~BDSW_Binary_Object() {}
-};
-
-class DeutschSchorrWaite_VariableSizeNode
-{
-public:
-    bool m_HasMarkedObject;
-    DeutschSchorrWaite_VariableSizeNode** m_ReferedObjects;
-    int m_CurrentIteratedChild = 0;
-    size_t m_NumberOfChildren;
-
-    virtual ~DeutschSchorrWaite_VariableSizeNode() {}
 };
 
 class ObjectVisitor
@@ -71,13 +35,10 @@ public:
 class DestroyVisitor : public ObjectVisitor
 {
 public:
-    std::unordered_set<Object*> m_Visited;
-
-public:
     virtual void Destroy(Object* o)
     {
-        auto insertResult = m_Visited.insert(o);
-        if (insertResult.second)
+        auto insert_result = m_Visited.insert(o);
+        if (insert_result.second)
         {
             o->VisitReferences(this, nullptr);
             o->~Object();
@@ -91,6 +52,9 @@ public:
             Destroy(*to);
         }
     }
+    std::unordered_set<Object*> m_Visited;
 };
 
-//std::unique_ptr<GarbageCollector> CreateGarbageCollector(int argc, char* argv[]);
+std::unique_ptr<GarbageCollector> CreateGarbageCollector(int argc,
+                                                         char* argv[]);
+

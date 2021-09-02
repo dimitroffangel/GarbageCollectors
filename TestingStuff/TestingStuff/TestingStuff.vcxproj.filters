@@ -15,43 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="genie.lua">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include=".clang-format">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="flat_hash_map\bytell_hash_map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flat_hash_map\flat_hash_map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flat_hash_map\unordered_map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weighted_action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cxxopts.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MarkSweepGC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BinaryDeutschSchorrWaiteGC.cpp">
+    <ClCompile Include="gc_leak.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BoehmDemersWeiserGC.cpp">
+    <ClCompile Include="gc_dummy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CheneyAlgorithmGC.cpp">
+    <ClCompile Include="..\..\MarkSweepGC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HybridMarkAndCopyGC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DeutschSchorrWaite_VariableSizeNode_GC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DummyGC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BinaryDeutschSchorrWaiteGC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DeutschSchorrWaite_VariableSizeNode_GC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BoehmDemersWeiserGC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CheneyAlgorithmGC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HybridMarkAndCopyGC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

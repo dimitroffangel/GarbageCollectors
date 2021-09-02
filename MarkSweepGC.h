@@ -2,6 +2,9 @@
 
 #include "Object.h"
 
+#include <memory>
+
+
 class MarkSweepGC : public GarbageCollector
 {
 public:
@@ -24,5 +27,9 @@ public:
     void CollectGarbage();
 
     void Shutdown() override;
+
+    // Inherited via GarbageCollector
+    void VisitReference(Object* from, Object** to, void* state) override;
 };
 
+std::unique_ptr<GarbageCollector> CreateGarbageCollector(int argc, char* argv[]);

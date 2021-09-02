@@ -1,5 +1,8 @@
 #include "MarkSweepGC.h"
 
+//#include "Object.h"
+#include <memory>
+
 MarkSweepGC::MarkSweepGC(const size_t gcInterval)
 	: m_GCInterval(gcInterval)
 {
@@ -13,7 +16,6 @@ void* MarkSweepGC::Allocate(const size_t size)
         CollectGarbage();
         m_AllocsSinceGC = 0;
     }
-
     auto memory = ::operator new(size);
     m_Allocated.insert(static_cast<Object*>(memory));
     return memory;
@@ -21,17 +23,12 @@ void* MarkSweepGC::Allocate(const size_t size)
 
 void MarkSweepGC::CollectGarbage()
 {
+
     m_Visited.clear();
+    m_Visited.insert(*m_Root);
+    (*m_Root)->VisitReferences(this, nullptr);
 
-    // TODO:: what happens if  m_root == nullptr and m_AllocsSinceGC > 0 
-    if (m_Root == nullptr)
-    {
-        return;
-    }
-
-    (*m_Root)->VisitReferences(this, nullptr, m_Visited);
-
-    for (const auto object : m_Allocated)
+    for (auto object : m_Allocated)
     {
         if (m_Visited.find(object) == m_Visited.end())
         {
@@ -39,31 +36,28 @@ void MarkSweepGC::CollectGarbage()
             ::operator delete(object);
         }
     }
-
     m_Allocated = m_Visited;
 }
 
 void MarkSweepGC::Shutdown()
 {
-    m_Visited.clear();
-
-    // TODO:: what happens if  m_root == nullptr and m_AllocsSinceGC > 0 
-    if (m_Root == nullptr)
+    for (auto object : m_Allocated)
     {
-        return;
+        object->~Object();
+        ::operator delete(object);
     }
+}
 
-    m_Visited.insert(*m_Root);
-    (*m_Root)->VisitReferences(this, nullptr, m_Visited);
-
-    for (const auto object : m_Allocated)
+void MarkSweepGC::VisitReference(Object* from, Object** to, void* state)
+{
+    auto insert = m_Visited.insert(*to);
+    if (insert.second)
     {
-        if (m_Visited.find(object) == m_Visited.end())
-        {
-            object->~Object();
-            ::operator delete(object);
-        }
+        (*to)->VisitReferences(this, nullptr);
     }
+}
 
-    m_Allocated = m_Visited;
+std::unique_ptr<GarbageCollector> CreateGarbageCollector(int argc, char* argv[])
+{
+    return std::unique_ptr<GarbageCollector>(new MarkSweepGC(1024));
 }

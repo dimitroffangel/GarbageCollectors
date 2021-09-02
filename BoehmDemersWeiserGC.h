@@ -13,25 +13,16 @@ public:
 	size_t m_AllocsSinceGC = 0;
 
 public:
-	BoehmDemersWeiserGC(const size_t gcInterval)
-		:m_GCInterval(gcInterval)
-	{
-		
-	}
-
+	BoehmDemersWeiserGC(const size_t gcInterval);
+	
 	// Inherited via GarbageCollector
 	virtual void VisitReference(Object* from, Object** to, void* state) override
 	{
 
 	}
 
-	virtual void* Allocate(size_t size) override
-	{
-		Object* const  allocatedObject = static_cast<Object*>(g_SmallObjectAllocator->Allocate(size));
-		m_Allocated.insert(allocatedObject);
+	virtual void* Allocate(size_t size) override;
 
-		return allocatedObject;
-	}
 	virtual void SetRoot(Object** root) override
 	{
 		m_Root = root;
@@ -39,32 +30,17 @@ public:
 
 	virtual void Shutdown() override;
 
-	void CollectGarbage()
-	{
-		m_Visited.clear();
+	void CollectGarbage();
 
-		// TODO:: what happens if  m_root == nullptr and m_AllocsSinceGC > 0 
-		if (m_Root == nullptr)
-		{
-			return;
-		}
+	//void operator delete(void* pointer, size_t size)
+	//{
+	//	g_SmallObjectAllocator->Deallocate(pointer, size);
+	//}
 
-		m_Visited.insert(*m_Root);
-		(*m_Root)->VisitReferences(this, nullptr, m_Visited);
+	//void* operator new(size_t size)
+	//{
+	//	return g_SmallObjectAllocator->Allocate(size);
+	//}
 
-		for (const auto& object : m_Allocated)
-		{
-			if (m_Visited.find(object) == m_Visited.end())
-			{
-				object->~Object();
-				g_SmallObjectAllocator->Deallocate(object, sizeof(object));
-			}
-		}
-
-		// compact the region
-
-
-		m_Allocated = m_Visited;
-	}
 };
 

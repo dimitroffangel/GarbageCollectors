@@ -1,8 +1,6 @@
-#pragma once
-
 #include <memory>
 
-#include "Object.h"
+#include "gc.h"
 
 class DummyGC : public GarbageCollector
 {
@@ -29,7 +27,7 @@ public:
         auto insert = m_Visited.insert(*to);
         if (insert.second)
         {
-            (*to)->VisitReferences(this, nullptr, m_Visited);
+            (*to)->VisitReferences(this, nullptr);
         }
     }
 
@@ -37,9 +35,9 @@ public:
     {
         m_Visited.clear();
         m_Visited.insert(*m_Root);
-        (*m_Root)->VisitReferences(this, nullptr, m_Visited);
+        (*m_Root)->VisitReferences(this, nullptr);
 
-        for (auto object : m_Allocated)
+        for (auto object: m_Allocated)
         {
             if (m_Visited.find(object) == m_Visited.end())
             {
@@ -52,7 +50,7 @@ public:
 
     void Shutdown() override
     {
-        for (auto object : m_Allocated)
+        for (auto object: m_Allocated)
         {
             object->~Object();
             ::operator delete(object);
@@ -67,7 +65,7 @@ public:
     unsigned m_AllocsSinceGC = 0;
 };
 
-//std::unique_ptr<GarbageCollector> CreateGarbageCollector(int, char* [])
+//std::unique_ptr<GarbageCollector> CreateGarbageCollector(int, char*[])
 //{
 //    return std::unique_ptr<GarbageCollector>(new DummyGC(1024));
 //}
