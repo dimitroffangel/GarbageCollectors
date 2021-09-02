@@ -1,6 +1,6 @@
 #include "BoehmDemersWeiserGC.h"
 
-
+#include "Allocators/SmallObject.h"
 
 BoehmDemersWeiserGC::BoehmDemersWeiserGC(const size_t gcInterval)
 	:m_GCInterval(gcInterval)
@@ -49,7 +49,7 @@ void BoehmDemersWeiserGC::CollectGarbage()
 	}
 
 	m_Visited.insert(*m_Root);
-	(*m_Root)->VisitReferences(this, nullptr, m_Visited);
+	(*m_Root)->VisitReferences(this, nullptr);
 
 	for (const auto& object : m_Allocated)
 	{
@@ -64,4 +64,17 @@ void BoehmDemersWeiserGC::CollectGarbage()
 
 
 	m_Allocated = m_Visited;
+}
+
+void BoehmDemersWeiserGC::operator delete(void* pointer, size_t size)
+{
+	//void* rawPointer = smallObject.operator new(sizeOfFoo);
+	SmallObject smallObject;
+	smallObject.operator delete(pointer, size);
+}
+
+void* BoehmDemersWeiserGC::operator new(size_t size)
+{
+	SmallObject smallObject;
+	return smallObject.operator new(size);
 }

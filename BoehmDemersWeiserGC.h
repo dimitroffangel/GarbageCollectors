@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Object.h"
-#include "Allocators/SmallObjectAllocator.h"
+
+class SmallObject;
 
 class BoehmDemersWeiserGC : public GarbageCollector
 {
@@ -11,6 +12,7 @@ public:
 	std::unordered_set<Object*> m_Visited;
 	size_t m_GCInterval;
 	size_t m_AllocsSinceGC = 0;
+	SmallObject* smallObjectAllocator;
 
 public:
 	BoehmDemersWeiserGC(const size_t gcInterval);
@@ -32,15 +34,9 @@ public:
 
 	void CollectGarbage();
 
-	//void operator delete(void* pointer, size_t size)
-	//{
-	//	g_SmallObjectAllocator->Deallocate(pointer, size);
-	//}
+	void operator delete(void* pointer, size_t size);
 
-	//void* operator new(size_t size)
-	//{
-	//	return g_SmallObjectAllocator->Allocate(size);
-	//}
+	void* operator new(size_t size);
 
 };
 

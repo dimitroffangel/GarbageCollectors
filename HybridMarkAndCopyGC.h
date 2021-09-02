@@ -87,7 +87,7 @@ public:
 
         for (const auto& root : m_Roots)
         {
-            (*root)->VisitReferences(this, nullptr, m_Visited);
+            (*root)->VisitReferences(this, nullptr);
         }
 
         std::unordered_set<LocalSpaceObject*> visitedFromSpaceObjects;

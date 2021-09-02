@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "MarkSweepGC.h"
+//#include "MarkSweepGC.h"
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
 
 	std::cout << *a;
 
-	CreateGarbageCollector(0, nullptr);
+	//CreateGarbageCollector(0, nullptr);
 
 	return 0;
 }
