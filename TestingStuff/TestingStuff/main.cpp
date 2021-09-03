@@ -14,6 +14,7 @@
 //#include "gc.h"
 //#include "../../Object.h"
 #include "../../MarkSweepGC.h"
+#include "../../BoehmDemersWeiserGC.h"
 #include <memory>
 
 #include "cxxopts.hpp"

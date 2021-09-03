@@ -29,7 +29,7 @@ public:
         auto insert = m_Visited.insert(*to);
         if (insert.second)
         {
-            (*to)->VisitReferences(this, nullptr, m_Visited);
+            (*to)->VisitReferences(this, nullptr);
         }
     }
 
@@ -37,7 +37,7 @@ public:
     {
         m_Visited.clear();
         m_Visited.insert(*m_Root);
-        (*m_Root)->VisitReferences(this, nullptr, m_Visited);
+        (*m_Root)->VisitReferences(this, nullptr);
 
         for (auto object : m_Allocated)
         {

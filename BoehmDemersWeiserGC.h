@@ -2,8 +2,6 @@
 
 #include "Object.h"
 
-class SmallObject;
-
 class BoehmDemersWeiserGC : public GarbageCollector
 {
 public:
@@ -12,7 +10,6 @@ public:
 	std::unordered_set<Object*> m_Visited;
 	size_t m_GCInterval;
 	size_t m_AllocsSinceGC = 0;
-	SmallObject* smallObjectAllocator;
 
 public:
 	BoehmDemersWeiserGC(const size_t gcInterval);
@@ -40,3 +37,4 @@ public:
 
 };
 
+std::unique_ptr<GarbageCollector> CreateGarbageCollector(int argc, char* argv[]);

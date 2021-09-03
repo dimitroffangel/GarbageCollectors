@@ -163,6 +163,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\BoehmDemersWeiserGC.h" />
     <ClInclude Include="..\..\MarkSweepGC.h" />
     <ClInclude Include="..\..\Object.h" />
     <ClInclude Include="cxxopts.hpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="weighted_action.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\BoehmDemersWeiserGC.cpp" />
     <ClCompile Include="..\..\MarkSweepGC.cpp" />
     <ClCompile Include="gc_dummy.cpp" />
     <ClCompile Include="gc_leak.cpp" />

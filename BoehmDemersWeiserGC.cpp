@@ -78,3 +78,8 @@ void* BoehmDemersWeiserGC::operator new(size_t size)
 	SmallObject smallObject;
 	return smallObject.operator new(size);
 }
+
+std::unique_ptr<GarbageCollector> CreateGarbageCollector(int argc, char* argv[])
+{
+    return std::unique_ptr<GarbageCollector>(new BoehmDemersWeiserGC(1024));
+}

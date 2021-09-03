@@ -144,7 +144,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BinaryDeutschSchorrWaiteGC.cpp" />
-    <ClCompile Include="BoehmDemersWeiserGC.cpp" />
     <ClCompile Include="CheneyAlgorithmGC.cpp" />
     <ClCompile Include="DeutschSchorrWaite_VariableSizeNode_GC.cpp" />
     <ClCompile Include="HybridMarkAndCopyGC.cpp" />
@@ -152,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinaryDeutschSchorrWaiteGC.h" />
-    <ClInclude Include="BoehmDemersWeiserGC.h" />
     <ClInclude Include="CheneyAlgorithmGC.h" />
     <ClInclude Include="DeutschSchorrWaite_VariableSizeNode_GC.h" />
     <ClInclude Include="DummyGC.h" />

@@ -21,9 +21,6 @@
     <ClCompile Include="BinaryDeutschSchorrWaiteGC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BoehmDemersWeiserGC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CheneyAlgorithmGC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,9 +39,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DeutschSchorrWaite_VariableSizeNode_GC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BoehmDemersWeiserGC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CheneyAlgorithmGC.h">

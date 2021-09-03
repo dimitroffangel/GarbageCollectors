@@ -15,7 +15,10 @@ public:
     LinearAllocator m_ToSpace;
 
 	// Inherited via GarbageCollector
-	virtual void VisitReference(Object* from, Object** to, void* state) override;
+	virtual void VisitReference(Object* from, Object** to, void* state) override
+	{
+
+	}
 
 
 	virtual void* Allocate(const size_t size) override
@@ -37,7 +40,10 @@ public:
     {
     }
 
-	virtual void SetRoot(Object** root) override;
+	virtual void SetRoot(Object** root) override
+	{
+		m_Root = root;
+	}
 
 private:
 	void FlipSpaces()

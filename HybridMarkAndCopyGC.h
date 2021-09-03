@@ -110,6 +110,12 @@ public:
             }
         }
 
+        FlipSpaces();
+
+        for (auto& visitedObject : m_Visited)
+        {
+            m_Allocated.insert(static_cast<LocalSpaceObject*>(visitedObject));
+        }
         //m_Allocated = m_Visited;
     }
 
@@ -163,5 +169,9 @@ public:
             objectToCopy->m_ReferedObjects[i] = objectToCopy->m_ForwardPointer;
         }
     }
+
+    // Inherited via GarbageCollector
+    virtual void VisitReference(Object* from, Object** to, void* state) override;
+    virtual void SetRoot(Object** root) override;
 };
 
